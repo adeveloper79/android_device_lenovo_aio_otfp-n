@@ -1,4 +1,4 @@
-# mt6753 platform boardconfig
+# mt6752 platform boardconfig
 LOCAL_PATH := device/lenovo/aio_otfp
 
 include vendor/adev/config/board.mk
@@ -82,9 +82,9 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
 # TWRP-specific
 ifeq ($(RECOVERY_VARIANT), twrp)
-DEVICE_RESOLUTION := 720x1280
-DEVICE_SCREEN_WIDTH := 720
-DEVICE_SCREEN_HEIGHT := 1280
+DEVICE_RESOLUTION := 1080x1920
+DEVICE_SCREEN_WIDTH := 1080
+DEVICE_SCREEN_HEIGHT := 1920
 RECOVERY_SDCARD_ON_DATA := true
 TW_INTERNAL_STORAGE_PATH := "/data/media"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
