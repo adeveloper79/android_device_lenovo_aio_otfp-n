@@ -11,6 +11,7 @@ TARGET_OTA_ASSERT_DEVICE := aio_otfp
 
 # MTK Helpers
 PRODUCT_PACKAGES += \
+    libgui_shim
     libccci_util \
     libcam.halsensor \
     libwvmsym
