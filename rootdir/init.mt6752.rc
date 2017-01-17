@@ -18,6 +18,8 @@ on init
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
 
+    export LD_PRELOAD "libgui_shim.so"
+
     # if primary storage is physical, set ro.vold.primary_physical to 1
     # setprop ro.vold.primary_physical 1
 
