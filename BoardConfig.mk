@@ -1,5 +1,6 @@
 # mt6752 platform boardconfig
 LOCAL_PATH := device/lenovo/aio_otfp
+TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 include vendor/adev/config/board.mk
 
