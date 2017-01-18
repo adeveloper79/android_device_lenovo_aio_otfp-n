@@ -1,10 +1,6 @@
 # MTK platform .rc configure
 
 import init.project.rc
-#import init.xlog.rc
-#import init.aee.rc
-import init.volte.rc
-import init.mal.rc
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
 import init.modem.rc
@@ -17,9 +13,9 @@ on early-init
 on init
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
-
+    
     export LD_PRELOAD "libgui_shim.so"
-
+    
     # if primary storage is physical, set ro.vold.primary_physical to 1
     # setprop ro.vold.primary_physical 1
 
@@ -66,9 +62,7 @@ on fs
     exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/userdata
     write /proc/bootprof "INIT:Mount_END"
 
-on fs
-
-   mount iso9660 loop@/system/etc/iAmCdRom.iso /mnt/cd-rom ro
+    mount iso9660 loop@/system/etc/iAmCdRom.iso /mnt/cd-rom ro
 
 on post-fs
     # Support legacy paths
@@ -157,8 +151,6 @@ on post-fs-data
     #insmod /system/lib/modules/mali.ko
     chmod 666 /dev/mali0
     #chown system graphics /dev/mali
-
-
 
     # Touch Panel
     # chmod 0664 /dev/touch
@@ -259,7 +251,7 @@ on post-fs-data
     chown system system /sys/class/misc/m_batch_misc/batchbatch
     chown system system /sys/class/misc/m_batch_misc/batchflush
 
-	chmod 0660 /sys/class/misc/m_gyro_misc/gyroenablenodata
+    chmod 0660 /sys/class/misc/m_gyro_misc/gyroenablenodata
     chmod 0660 /sys/class/misc/m_gyro_misc/gyroactive
     chmod 0660 /sys/class/misc/m_gyro_misc/gyrodelay
     chmod 0660 /sys/class/misc/m_gyro_misc/gyrobatch
@@ -427,7 +419,7 @@ on post-fs-data
     chown radio system /sys/devices/platform/mt-pmic/low_battery_protect_ut
 
     mkdir /data/amit/ 0770 system system
-		mkdir /data/misc/sensor 0774 system system
+    mkdir /data/misc/sensor 0774 system system
     mkdir /data/misc/akmd 0770 system system
     mkdir /data/misc/s62x 0771 compass compass
     mkdir /data/acdapi/ 0770 system system
@@ -439,7 +431,7 @@ on post-fs-data
     chown system /sys/devices/platform/msensor/driver/cpsreptz
     chown system /sys/devices/platform/gsensor/driver/cpsopmode
     chown system /sys/devices/platform/gsensor/driver/cpsrange
-    mkdir	/data/data/mcube 0664 system system
+    mkdir /data/data/mcube 0664 system system
 
     chown system /sys/class/input/input1/enable
     chown system /sys/class/input/input1/delay
@@ -584,16 +576,11 @@ on post-fs-data
     chmod 0660 /dev/kd_camera_flashlight
     chmod 0660 /dev/kd_camera_hw_bus2
     chmod 0660 /dev/FM50AF
-    chmod 0660 /dev/DW9718AF
     chmod 0660 /dev/CAM_CAL_DRV
     #lenovo.sw START wangsx3 20140814 add AF for AIO
     chmod 0660 /dev/DW9761OFILMA50AF
-    chmod 0660 /dev/DW9761OFILMAF
     chmod 0660 /dev/DW9761SUNNYAF
     #lenovo.sw END wangsx3 20140814  add AF for AIO
-    #lenovo.sw START add AF for AIO_ROW
-    chmod 0660 /dev/DW9718AF
-    #lenovo.sw END add AF for AIO_ROW
 
     chown system camera /dev/camera-sysram
     chown system camera /dev/camera-isp
@@ -603,16 +590,11 @@ on post-fs-data
     chown system camera /dev/kd_camera_flashlight
     chown system camera /dev/kd_camera_hw_bus2
     chown system camera /dev/FM50AF
-    chown system camera /dev/DW9718AF
     chown system camera /dev/CAM_CAL_DRV
     #lenovo.sw START wangsx3 20140814 add AF for AIO
-    chown system camera /dev/DW9761OFILMAF
     chown system camera /dev/DW9761OFILMA50AF
     chown system camera /dev/DW9761SUNNYAF
     #lenovo.sw END wangsx3 20140814  add AF for AIO
-    #lenovo.sw START add AF for AIO_ROW
-    chown system camera /dev/DW9718AF
-    #lenovo.sw END add AF for AIO_ROW
 
     #MATV
     chmod 0660 /dev/MATV
@@ -626,10 +608,6 @@ on post-fs-data
     chmod 0660 /dev/mt-mdp
     chown system media /dev/mt-mdp
 
-    # G2D
-    chmod 0660 /dev/mtkg2d
-    chown system media /dev/mtkg2d
-
     # SMI
     chmod 0660 /dev/MTK_SMI
     chown media media /dev/MTK_SMI
@@ -637,7 +615,7 @@ on post-fs-data
     #for eng mode
     chmod 0664 /dev/misc-sd
 
-   #change partition permission
+    #change partition permission
 
     chmod 0640 /mtd@sec_ro
     chown root system /mtd@sec_ro
@@ -715,8 +693,8 @@ on post-fs-data
     # Recycle stuffs
     exec /system/bin/rm -f /cache/.ipoh.img
 
-	#Thermal	
-	mkdir /data/.tp/ 0775 system system
+    #Thermal	
+    mkdir /data/.tp/ 0775 system system
 
     #create directory /data/subt for subtitle
     mkdir /mnt/subt/ 0770 media media
@@ -761,12 +739,6 @@ on boot
     chown root   radio  /sys/class/leds/lcd-backlight/duty
     chown root   radio  /sys/class/leds/lcd-backlight/div
     chown system system /sys/class/leds/lcd-backlight/trigger
-    chown system system /sys/class/leds/button-backlight/trigger
-    chown system system /sys/class/leds/keyboard-backlight/trigger
-    chown system system /sys/class/leds/jogball-backlight/trigger
-    chown system system /sys/class/leds/red/trigger
-    chown system system /sys/class/leds/green/trigger
-    chown system system /sys/class/leds/blue/trigger
 
     # Permission for hibernation
     chown radio system /sys/power/tuxonice
@@ -793,7 +765,7 @@ on boot
     chmod 0660 /proc/cpufreq/cpufreq_limited_max_freq_by_user
 
 ##Netlog tool
-   #change permissions about terminal
+    #change permissions about terminal
     chown root radio /proc/net/vlan/config
     chmod 0640 /proc/net/vlan/config
     chown root radio /proc/net/ip6_tables_matches
@@ -830,33 +802,6 @@ on boot
     chmod 0660 /dev/ttyGS3
     chown system radio /dev/ttyGS3
 
-on property:vold.decrypt=trigger_reset_main
-    start stop_modem
-
-on property:vold.decrypt=trigger_restart_min_framework
-    start start_modem
-    start msensord
-    start permission_check
-
-on property:vold.decrypt=trigger_restart_framework
-    start nvram_daemon
-    start start_modem
-    start msensord
-    start permission_check
-
-on property:vold.decrypt=trigger_shutdown_framework
-    start stop_modem
-    start swapoff_action
-
-service stop_modem /system/bin/md_ctrl 0
-    class main
-    disabled
-    oneshot
-
-service start_modem /system/bin/md_ctrl 1
-    class main
-    disabled
-    oneshot
 # Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.default 4096,87380,524288,4096,16384,524288
@@ -872,6 +817,32 @@ service start_modem /system/bin/md_ctrl 1
 
     setprop persist.sys.strictmode.disable 1
 
+on property:vold.decrypt=trigger_reset_main
+    start stop_modem
+
+on property:vold.decrypt=trigger_restart_min_framework
+    start start_modem
+    start msensord
+
+on property:vold.decrypt=trigger_restart_framework
+    start nvram_daemon
+    start start_modem
+    start msensord
+
+on property:vold.decrypt=trigger_shutdown_framework
+    start stop_modem
+    start swapoff_action
+
+service stop_modem /system/bin/md_ctrl 0
+    class main
+    disabled
+    oneshot
+
+service start_modem /system/bin/md_ctrl 1
+    class main
+    disabled
+    oneshot
+
 ## mtk printk uart controller
 on property:persist.uartconsole.enable=1
     write /proc/mtprintk 1
@@ -883,10 +854,12 @@ on property:persist.uartconsole.enable=1
 
 service mobile_log_d /system/bin/mobile_log_d
     class main
+
 # MTK PR_DEBUG SWITCH
 on property:debug.MB.prdebug=1
     write /sys/kernel/debug/dynamic_debug/control "file *mediatek* +p"
     write /sys/kernel/debug/dynamic_debug/control "file *gpu* -p"
+
 on property:debug.MB.prdebug=0
     write /sys/kernel/debug/dynamic_debug/control "file *mediatek* -p"
 
@@ -901,19 +874,18 @@ service bugreport /system/bin/dumpstate -d -p -B \
     oneshot
     keycodes 114 115 116
 
-#on property:sys.boot_completed=1
-#    start gas_srv
+on property:sys.boot_completed=1
+    start gas_srv
 
-#service gas_srv /system/bin/gas_srv
-#    class core
-#    user system
-#    group system
-#    disabled
+service gas_srv /system/bin/gas_srv
+    class core
+    user system
+    group system
+    disabled
 
 service netdiag /system/bin/netdiag
     class main
     socket netdiag stream 0664 root inet
-
 
 service nvram_daemon /system/bin/nvram_daemon
     class main
@@ -925,18 +897,6 @@ service pq /system/bin/pq
     class main
     user system
     group system graphics
-
-service aal /system/bin/aal
-    class main
-    user system
-    group system graphics
-
-# FOTA upgrade
-service rbfota /system/bin/fota1
-    class main
-    disabled
-    oneshot
-
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -971,7 +931,6 @@ service autokd /system/bin/autokd
     class core
     user system
     group system
-
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -BK -dd
     class main
@@ -1040,47 +999,43 @@ service dhcp6c_PD /system/bin/dhcp6c -c "/etc/wide-dhcpv6/dhcp6cPD.conf" -Df
     disabled
     oneshot
 
-service pppoe_wlan0 /system/bin/launchpppoe
-    user root
-    group radio cache inet misc
-    disabled
-    oneshot
-
-on property:service.pppoe_wlan0.enable=0
-    stop pppoe_wlan0
-
-on property:service.pppoe_wlan0.enable=1
-    start pppoe_wlan0
 # write proc for test sim
-    on property:gsm.sim.ril.testsim=0
+on property:gsm.sim.ril.testsim=0
     write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 0
     write /proc/sys/net/ipv4/tcp_rto_min 200
     write /proc/sys/net/ipv4/tcp_early_retrans 3
-    on property:gsm.sim.ril.testsim=1
+
+on property:gsm.sim.ril.testsim=1
     write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 1
     write /proc/sys/net/ipv4/tcp_rto_min 400
     write /proc/sys/net/ipv4/tcp_early_retrans 0
-    on property:gsm.sim.ril.testsim.2=0
+
+on property:gsm.sim.ril.testsim.2=0
     write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 0
     write /proc/sys/net/ipv4/tcp_rto_min 200
     write /proc/sys/net/ipv4/tcp_early_retrans 3
-    on property:gsm.sim.ril.testsim.2=1
+
+on property:gsm.sim.ril.testsim.2=1
     write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 1
     write /proc/sys/net/ipv4/tcp_rto_min 400
     write /proc/sys/net/ipv4/tcp_early_retrans 0
-    on property:gsm.sim.ril.testsim.3=0
+
+on property:gsm.sim.ril.testsim.3=0
     write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 0
     write /proc/sys/net/ipv4/tcp_rto_min 200
     write /proc/sys/net/ipv4/tcp_early_retrans 3
-    on property:gsm.sim.ril.testsim.3=1
+
+on property:gsm.sim.ril.testsim.3=1
     write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 1
     write /proc/sys/net/ipv4/tcp_rto_min 400
     write /proc/sys/net/ipv4/tcp_early_retrans 0
-    on property:gsm.sim.ril.testsim.4=0
+
+on property:gsm.sim.ril.testsim.4=0
     write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 0
     write /proc/sys/net/ipv4/tcp_rto_min 200
     write /proc/sys/net/ipv4/tcp_early_retrans 3
-    on property:gsm.sim.ril.testsim.4=1
+
+on property:gsm.sim.ril.testsim.4=1
     write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 1
     write /proc/sys/net/ipv4/tcp_rto_min 400
     write /proc/sys/net/ipv4/tcp_early_retrans 0
