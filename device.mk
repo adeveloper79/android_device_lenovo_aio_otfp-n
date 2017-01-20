@@ -24,7 +24,7 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     libaudio-resampler \
     libemoji \
-    libfmjni \
+    #libfmjni \
     libgralloc_extra \
     libnl_2 \
     libtinyalsa \
