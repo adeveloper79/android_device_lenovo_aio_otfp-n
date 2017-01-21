@@ -12,14 +12,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
 
-# Inherit Lineage's custom product configuration
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit Tesla's custom product configuration
+$(call inherit-product, vendor/tesla/config/common_full_phone.mk)
 
 # Call device specific makefile
 $(call inherit-product, device/lenovo/aio_otfp/device.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := lineage_aio_otfp
+PRODUCT_NAME := tesla_aio_otfp
 PRODUCT_DEVICE := aio_otfp
 PRODUCT_BRAND := Lenovo
 PRODUCT_MODEL := Lenovo K3 Note
