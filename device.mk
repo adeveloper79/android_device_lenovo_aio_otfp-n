@@ -29,8 +29,8 @@ PRODUCT_PACKAGES += \
     libtinyalsa \
     libtinycompress \
     libtinymix \
-    libtinyxml
-    #libfmjni 
+    libtinyxml \
+    libfmjni 
 
 # Audio policy & codec
 PRODUCT_COPY_FILES += \
@@ -50,7 +50,7 @@ PRODUCT_COPY_FILES += \
 # Keyboard layout
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
-    $(LOCAL_PATH)/configs/Generic:system/usr/keylayout/Generic.kl \
+    $(LOCAL_PATH)/configs/Generic.kl:system/usr/keylayout/Generic.kl \
     $(LOCAL_PATH)/configs/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
     $(LOCAL_PATH)/configs/AVRCP.kl:system/usr/keylayout/AVRCP.kl
 
