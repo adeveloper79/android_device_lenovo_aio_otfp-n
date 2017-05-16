@@ -10,7 +10,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
 # Inherit from AOSP product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
+$(call inherit-product, $(RC_TARGET_DIR)/product/telephony.mk)
 
 # Inherit Lineage's custom product configuration
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
@@ -25,3 +25,6 @@ PRODUCT_BRAND := Lenovo
 PRODUCT_MODEL := Lenovo K3 Note
 PRODUCT_MANUFACTURER := Lenovo
 PRODUCT_RESTRICT_VENDOR_FILES := false
+
+#Magiak
+ROOT_METHOD := magisk
