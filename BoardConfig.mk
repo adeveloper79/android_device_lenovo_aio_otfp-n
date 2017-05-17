@@ -81,6 +81,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
+
 # TWRP-specific
 ifeq ($(RECOVERY_VARIANT), twrp)
 DEVICE_RESOLUTION := 1080x1920
@@ -100,3 +101,7 @@ TARGET_LDPRELOAD += libgui_shim.so
 
 # Seccomp filter
 BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
+
+# LED Path
+BOARD_RED_LED_PATH	:= "/sys/class/leds/test-led"
+BOARD_GREEN_LED_PATH	:= "/sys/class/leds/greenled"
