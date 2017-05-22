@@ -105,3 +105,5 @@ BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
 # LED Path
 BOARD_RED_LED_PATH	:= "/sys/class/leds/test-led"
 BOARD_GREEN_LED_PATH	:= "/sys/class/leds/greenled"
+
+BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/BOOT/BOOT/boot/boot_mode
