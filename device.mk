@@ -29,8 +29,7 @@ PRODUCT_PACKAGES += \
     libtinyalsa \
     libtinycompress \
     libtinymix \
-    libtinyxml \
-    libfmjni 
+    libtinyxml
 
 # Audio policy & codec
 PRODUCT_COPY_FILES += \
