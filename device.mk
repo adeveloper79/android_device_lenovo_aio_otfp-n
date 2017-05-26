@@ -22,6 +22,7 @@ PRODUCT_PACKAGES += \
     libemoji \
     libgralloc_extra \
     libnl_2 \
+    fs_config_files
 
 # Audio
 PRODUCT_PACKAGES += \
