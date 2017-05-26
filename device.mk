@@ -18,19 +18,23 @@ PRODUCT_PACKAGES += \
 
 # Extra packages
 PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    audio.r_submix.default \
-    audio.usb.default \
     com.android.future.usb.accessory \
-    libaudio-resampler \
     libemoji \
     libgralloc_extra \
     libnl_2 \
+
+# Audio
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    audio_policy.default \
+    audio.usb.default \
+    audio.r_submix.default \
+    libaudio-resampler \
     libtinyalsa \
     libtinycompress \
     libtinymix \
     libtinyxml
-
+    
 # Audio policy & codec
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
