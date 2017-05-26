@@ -106,6 +106,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.ril.log=0 \
     ro.disable.xlog=0
 
+# Lights
+PRODUCT_PACKAGES += \
+    lights.mt6752
+    
 # Dalvik/HWUI
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
