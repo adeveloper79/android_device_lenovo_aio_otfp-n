@@ -27,7 +27,6 @@ PRODUCT_PACKAGES += \
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
-    audio_policy.default \
     audio.usb.default \
     audio.r_submix.default \
     libaudio-resampler \
