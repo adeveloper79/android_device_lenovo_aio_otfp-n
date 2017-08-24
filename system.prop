@@ -114,3 +114,4 @@ ro.mtk_matv_analog_support=1
 ro.mtk_wapi_support=1
 ro.mtk_wappush_support=1
 
+sys.display-size=3840x2160  //Allows 4K Video Youtube Playback

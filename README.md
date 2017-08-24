@@ -1,2 +1,14 @@
-# android_device_lenovo_aio_otfp-n
-Working Tree Nougat for Lenovo K3 Note
+Device Tree For Lenovo K3 Note
+
+What Works:
+* RIL
+* Bluetooth
+* Wifi
+* Hotspot
+* Camera (all functionalities HDR, Video Rec. etc)
+* Sound
+* Offline Charging
+
+What doesn't Work:
+* MKV format video will lag due to HW Decoder
+* LED
