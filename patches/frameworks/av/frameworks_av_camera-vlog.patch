@@ -1,0 +1,23 @@
+From 967750addf7bbfbff4995826ee108d76488ad986 Mon Sep 17 00:00:00 2001
+From: danielhk <daniel.p6800@gmail.com>
+Date: Sat, 3 Mar 2018 20:50:39 +0800
+Subject: [PATCH] More appropriate VLOG
+
+---
+ camera/ICameraClient.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/camera/ICameraClient.cpp b/camera/ICameraClient.cpp
+index 8620f3602..545455e8e 100644
+--- a/camera/ICameraClient.cpp
++++ b/camera/ICameraClient.cpp
+@@ -74,7 +74,7 @@ class BpCameraClient: public BpInterface<ICameraClient>
+     // generic data callback from camera service to app with image data
+     void dataCallbackTimestamp(nsecs_t timestamp, int32_t msgType, const sp<IMemory>& imageData)
+     {
+-        ALOGV("dataCallback");
++        ALOGV("dataCallbackTimestamp");
+         Parcel data, reply;
+         data.writeInterfaceToken(ICameraClient::getInterfaceDescriptor());
+         data.writeInt64(timestamp);
+

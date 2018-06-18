@@ -75,12 +75,15 @@ TARGET_KMODULES := true
 
 # Kernel
 #TARGET_PREBUILT_KERNEL := device/lenovo/aio_otfp/configs/kernel
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-BOARD_KERNEL_IMAGE_NAME := Image.gz
-TARGET_KERNEL_CONFIG := aio_otfp_o_defconfig
-TARGET_KERNEL_SOURCE := kernel/lenovo/aio_otfp
-TARGET_MTK_KERNEL := true
-endif
+#ifeq ($(TARGET_PREBUILT_KERNEL),)
+#BOARD_KERNEL_IMAGE_NAME := Image.gz
+#TARGET_KERNEL_CONFIG := aio_otfp_o_defconfig
+#TARGET_KERNEL_SOURCE := kernel/lenovo/aio_otfp
+#TARGET_MTK_KERNEL := true
+#endif
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
+$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
+
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/bootimg/bootimg.mk
 TARGET_HAS_EARLYSUSPEND := true
 

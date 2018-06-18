@@ -1,0 +1,54 @@
+From b3087e5713eb1263331fff665fb4df7e13161c89 Mon Sep 17 00:00:00 2001
+From: danielhk <daniel.p6800@gmail.com>
+Date: Fri, 22 Dec 2017 23:19:21 +0800
+Subject: [PATCH] init:remove set_mmap_rnd_bits_action
+
+Kerenl doesn't support set_mmap_rnd_bits
+---
+ init/init.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/init/init.cpp b/init/init.cpp
+index 1968eb656..f97b6c835 100644
+--- a/init/init.cpp
++++ b/init/init.cpp
+@@ -1113,7 +1113,7 @@ int main(int argc, char** argv) {
+     am.QueueBuiltinAction(wait_for_coldboot_done_action, "wait_for_coldboot_done");
+     // ... so that we can start queuing up actions that require stuff from /dev.
+     am.QueueBuiltinAction(mix_hwrng_into_linux_rng_action, "mix_hwrng_into_linux_rng");
+-    am.QueueBuiltinAction(set_mmap_rnd_bits_action, "set_mmap_rnd_bits");
++    //am.QueueBuiltinAction(set_mmap_rnd_bits_action, "set_mmap_rnd_bits");
+     am.QueueBuiltinAction(set_kptr_restrict_action, "set_kptr_restrict");
+     am.QueueBuiltinAction(keychord_init_action, "keychord_init");
+     am.QueueBuiltinAction(console_init_action, "console_init");
+From e7513fa5648d2f5521c4ca9d4a8a8ad478fd298c Mon Sep 17 00:00:00 2001
+From: danielhk <daniel.p6800@gmail.com>
+Date: Sun, 24 Dec 2017 13:27:43 +0800
+Subject: [PATCH] init:fix build
+
+---
+ init/init.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/init/init.cpp b/init/init.cpp
+index f97b6c835..fe4d7024f 100644
+--- a/init/init.cpp
++++ b/init/init.cpp
+@@ -334,7 +334,7 @@ static bool set_highest_available_option_value(std::string path, int min, int ma
+     }
+     return true;
+ }
+-
++#if 0
+ #define MMAP_RND_PATH "/proc/sys/vm/mmap_rnd_bits"
+ #define MMAP_RND_COMPAT_PATH "/proc/sys/vm/mmap_rnd_compat_bits"
+ 
+@@ -402,7 +402,7 @@ static int set_mmap_rnd_bits_action(const std::vector<std::string>& args)
+     }
+     return ret;
+ }
+-
++#endif
+ #define KPTR_RESTRICT_PATH "/proc/sys/kernel/kptr_restrict"
+ #define KPTR_RESTRICT_MINVALUE 2
+ #define KPTR_RESTRICT_MAXVALUE 4

@@ -1,0 +1,24 @@
+From 920986fc7341917298fcbcfe10d4f2fb07042cdc Mon Sep 17 00:00:00 2001
+From: danielhk <daniel.p6800@gmail.com>
+Date: Sun, 24 Dec 2017 00:10:16 +0800
+Subject: [PATCH] libutils:Allow thread to run without a name
+
+Some old blobs didn't provide the thread name.
+---
+ libutils/Threads.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libutils/Threads.cpp b/libutils/Threads.cpp
+index 6317c32d4..0ad790025 100644
+--- a/libutils/Threads.cpp
++++ b/libutils/Threads.cpp
+@@ -661,7 +661,7 @@ status_t Thread::readyToRun()
+ 
+ status_t Thread::run(const char* name, int32_t priority, size_t stack)
+ {
+-    LOG_ALWAYS_FATAL_IF(name == nullptr, "thread name not provided to Thread::run");
++    ALOGW_IF(name == nullptr, "thread name not provided to Thread::run");
+ 
+     Mutex::Autolock _l(mLock);
+ 
+
